@@ -50,4 +50,12 @@ class Similarities:
                     sim = self.jaccard_similarity(set1, set2)
                     similarities[kgram_type][f"{doc1}_{doc2}"] = sim
         return similarities
+    
+    def approximate_similarity(self, signature1, signature2):
+        if len(signature1) != len(signature2):
+            raise ValueError("Signatures must have the same length")
+        if not signature1 or not signature2:
+            return 0.0
+        matches = sum(1 for h1, h2 in zip(signature1, signature2) if h1 == h2)
+        return matches / len(signature1)
         
