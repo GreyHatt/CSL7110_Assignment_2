@@ -1,0 +1,7 @@
+version: "3.8"
+services:
+  assignment2:
+    build: .
+    volumes:
+        - .:/app
+    command: ["python3", "/app/main.py"]
